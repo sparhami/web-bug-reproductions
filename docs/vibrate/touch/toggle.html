@@ -1,0 +1,55 @@
+<!doctype html>
+<html ⚡ lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Haptic example</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <style>
+    .toggle {
+      outline: none;
+      width: 50px;
+      height: 30px;
+      padding: 8px;
+      -webkit-appearance: none;
+    }
+
+    .toggle::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background-color: white;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      transition: scale 200ms;
+    }
+
+    .selected::-webkit-slider-thumb {
+      transform: scale(0.9);
+    }
+
+    .toggle::-webkit-slider-runnable-track {
+      background-color: #aaa;
+      border-radius: 15px;
+      transition: background-color 200ms;
+    }
+
+    .selected::-webkit-slider-runnable-track  {
+      background-color: rgb(41, 107, 206);
+    }
+  </style>
+</head>
+<body>
+	<input
+			class="toggle"
+			type="range"
+			min="0" max="1" value="0" step="1"
+			oninput="toggle(event)">
+	<script>
+		function toggle(event) {
+			navigator.vibrate([4, 5, 2]);
+			event.target.classList.toggle('selected');
+		}
+	</script>
+</body>
+</html>
+

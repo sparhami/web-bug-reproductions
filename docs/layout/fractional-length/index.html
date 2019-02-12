@@ -1,0 +1,50 @@
+<html>
+<head>
+  <style>
+    body {
+      margin: 0!important;
+    }
+
+    x-carousel {
+      display: block;
+      overflow: hidden;
+      position: relative;
+      width: 400px;
+      height: 300.5px;
+    }
+
+    .scroll-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      scroll-behavior: smooth;
+      overflow-y: auto;
+    }
+
+    .slide {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+<body>
+  <x-carousel>
+    <div class="scroll-container">
+      <div class="slide" style="background-color: red;"></div>
+      <div class="slide scroll" style="background-color: #f8f8f8"></div>
+      <div class="slide" style="background-color: green;"></div>
+    </div>
+  </x-carousel>
+  <button onclick="manualScroll()">scroll to 300.5</button>
+</body>
+<script>
+  document.querySelector('.scroll').scrollIntoView({block: 'start'});
+
+  function manualScroll() {
+    document.querySelector('.scroll-container').scrollTo(0, 300.5);
+  }
+</script>
+</html>

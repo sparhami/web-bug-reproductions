@@ -1,0 +1,49 @@
+<html>
+<head>
+  <style>
+    body {
+      margin: 0!important;
+    }
+
+    x-carousel {
+      display: block;
+      overflow: hidden;
+      position: relative;
+      width: 400px;
+      height: 300.5px;
+    }
+
+    .scroll-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      scroll-behavior: smooth;
+      overflow-y: auto;
+    }
+
+    .slide {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+<body>
+  <x-carousel>
+    <div class="scroll-container">
+      <div class="slide" style="background-color: #9400D3;"></div>
+      <div class="slide" style="background-color: #4B0082;"></div>
+      <div class="slide scroll" style="background-color: #0000FF;"></div>
+      <div class="slide" style="background-color: #00FF00;"></div>
+      <div class="slide" style="background-color: #FFFF00;"></div>
+      <div class="slide" style="background-color: #FF7F00;"></div>
+      <div class="slide" style="background-color: #FF0000;"></div>
+    </div>
+  </x-carousel>
+</body>
+<script>
+  document.querySelector('.scroll').scrollIntoView({block: 'start'});
+</script>
+</html>

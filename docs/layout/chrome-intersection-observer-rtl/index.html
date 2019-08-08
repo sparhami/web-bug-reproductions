@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Intersection observer and RTL</title>
+  <style>
+    .carousel {
+      display: flex;
+      flex-direction: row;
+      width: 400px;
+      height: 300px;
+      overflow-x: auto;
+    }
+    
+    .slide {
+      flex-shrink: 0;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    
+    .slide-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      font-size: 2em;
+      box-sizing: border-box;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel" dir="rtl">
+    <div class="slide">
+      <div class="slide-content" style="background-color: #6e9"></div>
+    </div>
+    <div class="slide">
+<div class="slide-content" style="background-color: #e63"></div>
+    </div>
+    <div class="slide">
+<div class="slide-content" style="background-color: #36e"></div>
+    </div>
+  </div>
+</body>
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const sc = e.target.querySelector('.slide-content');
+        sc.textContent = `isIntersecting: ${e.isIntersecting}`;
+      });
+    }, {
+      root: document.querySelector('.carousel'),
+      threshold: 0.01,
+    });
+    Array.from(document.querySelectorAll('.slide'))
+      .forEach(s => {
+        io.observe(s);
+      });
+  </script>
+</html>
